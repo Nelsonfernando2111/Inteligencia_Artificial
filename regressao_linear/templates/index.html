@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Previsão de Preço de Casas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Previsão de Preço de Casas</h1>
+        <form method="POST" action="/predict">
+            <label>Área (m²):</label>
+            <input type="number" name="area" required>
+
+            <label>Quartos:</label>
+            <input type="number" name="quartos" required>
+
+            <label>Banheiros:</label>
+            <input type="number" name="banheiro" required>
+
+            <label>Idade do imóvel (anos):</label>
+            <input type="number" name="idade" required>
+
+            <button type="submit">Prever</button>
+        </form>
+
+        {% if prediction is not none %}
+            <div class="result">Preço previsto: MZN {{ prediction }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
